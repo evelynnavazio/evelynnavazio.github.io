@@ -3,16 +3,21 @@
   --bg-soft: #111A2E;
   --card: #151A23;
   --card-soft: #1B2436;
+
   --blue: #2563EB;
   --blue-bright: #3B82F6;
   --cyan: #22D3EE;
+
   --violet: #A78BFA;
   --violet-strong: #8B5CF6;
   --pink: #EC4899;
+
   --text: #E6EDF7;
   --muted: #94A3B8;
+
   --border: rgba(167, 139, 250, 0.22);
   --border-strong: rgba(167, 139, 250, 0.62);
+
   --shadow: rgba(0, 0, 0, 0.35);
 }
 
@@ -66,37 +71,57 @@ a {
   justify-content: space-between;
   align-items: center;
   padding: 22px 8%;
-  background: rgba(11, 17, 32, 0.86);
+  background: rgba(11, 17, 32, 0.88);
   backdrop-filter: blur(18px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .logo {
-  font-weight: 900;
+  position: relative;
+  display: inline-block;
+  font-weight: 950;
   letter-spacing: 0.04em;
-  font-size: 1.08rem;
+  font-size: 1.12rem;
   color: var(--text);
   transition:
-    color 0.25s ease,
-    transform 0.25s ease,
-    text-shadow 0.25s ease,
-    letter-spacing 0.25s ease;
+    transform 0.28s ease,
+    letter-spacing 0.28s ease,
+    text-shadow 0.28s ease,
+    color 0.28s ease;
+}
+
+.logo::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -7px;
+  width: 0%;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--blue), var(--violet), var(--cyan));
+  box-shadow: 0 0 18px rgba(167, 139, 250, 0.85);
+  transition: width 0.3s ease;
 }
 
 .logo:hover {
   color: var(--violet);
-  transform: translateY(-2px) scale(1.04);
+  transform: translateY(-3px) scale(1.05);
   letter-spacing: 0.09em;
   text-shadow:
-    0 0 12px rgba(167, 139, 250, 0.85),
-    0 0 28px rgba(37, 99, 235, 0.75);
+    0 0 12px rgba(167, 139, 250, 0.9),
+    0 0 24px rgba(37, 99, 235, 0.75),
+    0 0 38px rgba(34, 211, 238, 0.35);
+}
+
+.logo:hover::after {
+  width: 100%;
 }
 
 .navbar nav {
   display: flex;
-  gap: 22px;
-  font-size: 1rem;
-  font-weight: 750;
+  gap: 24px;
+  font-size: 1.03rem;
+  font-weight: 800;
   color: var(--muted);
 }
 
@@ -105,7 +130,8 @@ a {
   transition:
     color 0.25s ease,
     transform 0.25s ease,
-    text-shadow 0.25s ease;
+    text-shadow 0.25s ease,
+    letter-spacing 0.25s ease;
 }
 
 .navbar nav a::after {
@@ -124,6 +150,7 @@ a {
 .navbar nav a:hover {
   color: var(--text);
   transform: translateY(-2px);
+  letter-spacing: 0.03em;
   text-shadow:
     0 0 10px rgba(167, 139, 250, 0.85),
     0 0 18px rgba(59, 130, 246, 0.65);
@@ -167,13 +194,13 @@ h1 {
   background: linear-gradient(
     90deg,
     var(--text),
+    #dbeafe,
     var(--blue-bright),
     var(--violet),
-    var(--cyan),
-    var(--pink),
+    #c4b5fd,
     var(--text)
   );
-  background-size: 350% 350%;
+  background-size: 260% 260%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -184,15 +211,15 @@ h1 {
 }
 
 .magic-title:hover {
-  animation: rainbowMove 2.8s ease infinite;
-  transform: translateY(-4px) scale(1.01);
+  animation: subtleNeonText 3.2s ease infinite;
+  transform: translateY(-3px);
   filter:
-    drop-shadow(0 0 18px rgba(167, 139, 250, 0.55))
-    drop-shadow(0 0 34px rgba(37, 99, 235, 0.35));
-  letter-spacing: -0.052em;
+    drop-shadow(0 0 12px rgba(167, 139, 250, 0.42))
+    drop-shadow(0 0 24px rgba(37, 99, 235, 0.26));
+  letter-spacing: -0.055em;
 }
 
-@keyframes rainbowMove {
+@keyframes subtleNeonText {
   0% {
     background-position: 0% 50%;
   }
@@ -265,10 +292,12 @@ h3 {
   flex-wrap: wrap;
 }
 
+/* BUTTONS */
+
 .button {
   position: relative;
   overflow: hidden;
-  padding: 13px 22px;
+  padding: 14px 24px;
   border-radius: 999px;
   font-weight: 900;
   border: 1px solid var(--border);
@@ -276,14 +305,20 @@ h3 {
     transform 0.25s ease,
     box-shadow 0.25s ease,
     border-color 0.25s ease,
-    color 0.25s ease;
+    color 0.25s ease,
+    background 0.25s ease;
 }
 
 .button::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.26), transparent);
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.28),
+    transparent
+  );
   transform: translateX(-100%);
   transition: transform 0.55s ease;
 }
@@ -304,17 +339,30 @@ h3 {
 }
 
 .button:hover {
-  transform: translateY(-4px) scale(1.03);
+  transform: translateY(-4px) scale(1.04);
   border-color: var(--border-strong);
   box-shadow:
     0 0 18px rgba(167, 139, 250, 0.45),
     0 0 34px rgba(37, 99, 235, 0.28);
 }
 
+.button.primary:hover {
+  background: linear-gradient(135deg, var(--violet-strong), var(--cyan));
+}
+
+.button.secondary:hover {
+  background: rgba(167, 139, 250, 0.12);
+  color: white;
+}
+
 /* SECTIONS */
 
 .section {
   padding: 96px 8%;
+}
+
+.compact-section {
+  padding-top: 40px;
 }
 
 .section-title {
@@ -495,7 +543,7 @@ h3 {
   box-shadow: 0 0 18px rgba(167, 139, 250, 0.35);
 }
 
-/* CERTIFICATES */
+/* CERTIFICATES INFINITE CAROUSEL */
 
 .certificates-section {
   padding-left: 0;
@@ -507,36 +555,50 @@ h3 {
   padding-right: 8%;
 }
 
-.certificates-scroll {
+.carousel-wrapper {
+  width: 100%;
+  overflow: hidden;
+  padding: 12px 0 36px;
+  position: relative;
+}
+
+.carousel-wrapper::before,
+.carousel-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 10%;
+  height: 100%;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.carousel-wrapper::before {
+  left: 0;
+  background: linear-gradient(90deg, var(--bg), transparent);
+}
+
+.carousel-wrapper::after {
+  right: 0;
+  background: linear-gradient(270deg, var(--bg), transparent);
+}
+
+.certificate-track {
   display: flex;
   gap: 24px;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-snap-type: x mandatory;
-  padding: 10px 8% 34px;
-  scrollbar-width: thin;
-  scrollbar-color: var(--violet) rgba(255, 255, 255, 0.08);
+  width: max-content;
+  padding-left: 8%;
+  animation: scrollCertificates 36s linear infinite;
 }
 
-.certificates-scroll::-webkit-scrollbar {
-  height: 10px;
-}
-
-.certificates-scroll::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.06);
-  border-radius: 999px;
-}
-
-.certificates-scroll::-webkit-scrollbar-thumb {
-  background: linear-gradient(90deg, var(--blue), var(--violet));
-  border-radius: 999px;
+.carousel-wrapper:hover .certificate-track {
+  animation-play-state: paused;
 }
 
 .certificate-card {
   min-width: 360px;
   max-width: 360px;
   min-height: 430px;
-  scroll-snap-align: start;
   flex: 0 0 auto;
 }
 
@@ -596,6 +658,16 @@ h3 {
   color: var(--blue-bright);
   font-weight: 900;
   font-size: 0.9rem;
+}
+
+@keyframes scrollCertificates {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-45%);
+  }
 }
 
 /* CONTACT */
@@ -671,6 +743,10 @@ h3 {
     padding: 72px 6%;
   }
 
+  .compact-section {
+    padding-top: 20px;
+  }
+
   .area-grid,
   .project-grid {
     grid-template-columns: 1fr;
@@ -685,9 +761,8 @@ h3 {
     padding-right: 6%;
   }
 
-  .certificates-scroll {
+  .certificate-track {
     padding-left: 6%;
-    padding-right: 6%;
   }
 
   .certificate-card {
