@@ -136,7 +136,14 @@
           </div>
 
           <div class="project-links">
-            <a href="#" target="_blank">GitHub</a>
+            <a
+              href="https://github.com/evelyngrau/XA-Academy-automationintesting"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-event="click_xacademy_github"
+            >
+              GitHub
+            </a>
             <a href="#" target="_blank">Test Cases</a>
             <a href="#" target="_blank">Trello</a>
           </div>
@@ -472,11 +479,44 @@
       </p>
 
       <div class="contact-links">
-        <a href="https://www.linkedin.com/" target="_blank">LinkedIn</a>
-        <a href="https://github.com/" target="_blank">GitHub</a>
-        <a href="mailto:emaildetester2023@gmail.com">Email</a>
+        <a
+          href="https://www.linkedin.com/in/evelynagrau/"
+          target="_blank"
+          rel="noopener noreferrer"
+          data-event="click_linkedin"
+        >
+          LinkedIn
+        </a>
+        <a
+          href="https://github.com/evelyngrau/evelyngrau.github.io/blob/main/index.html"
+          target="_blank"
+          rel="noopener noreferrer"
+          data-event="click_repository_github"
+        >
+          GitHub
+        </a>
+        <a
+          href="mailto:emaildetester2023@gmail.com"
+          data-event="click_email"
+        >
+          Email
+        </a>
       </div>
     </section>
   </main>
+  <script>
+  document.addEventListener("click", function (event) {
+    const trackedElement = event.target.closest("[data-event]");
+
+    if (!trackedElement || typeof gtag !== "function") {
+      return;
+    }
+
+    gtag("event", trackedElement.dataset.event, {
+      link_text: trackedElement.textContent.trim(),
+      link_url: trackedElement.href || ""
+    });
+  });
+</script>
 </body>
 </html>
